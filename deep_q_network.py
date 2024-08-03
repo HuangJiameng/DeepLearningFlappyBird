@@ -1,7 +1,12 @@
 #!/usr/bin/env python
 from __future__ import print_function
+import tensorflow as tf
+tf = tf.compat.v1
+tf.disable_eager_execution()
+
 
 import tensorflow as tf
+tf = tf.compat.v1
 import cv2
 import sys
 sys.path.append("game/")
@@ -22,7 +27,7 @@ BATCH = 32 # size of minibatch
 FRAME_PER_ACTION = 1
 
 def weight_variable(shape):
-    initial = tf.truncated_normal(shape, stddev = 0.01)
+    initial = tf.random.truncated_normal(shape, stddev = 0.01)
     return tf.Variable(initial)
 
 def bias_variable(shape):
